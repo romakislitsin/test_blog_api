@@ -28,8 +28,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:id])
-    if @comment
+    if @comment = @post.comments.find_by(id: params[:id])
       render json: @comment
     else
       render json: { errors: "Can't find comment with id #{params[:id]}" }

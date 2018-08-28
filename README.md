@@ -148,3 +148,93 @@
   }
 ]
 ```
+## Endpoints for creating comments:
+
+**Create new users post comment:**
+
+ - Request: 
+ ```bash
+ curl -d '{"body":"body","published_at":"2018-08-27T23:58:11.548Z"}' -H "Content-Type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzU5OTYzOTksInN1YiI6MX0.qpmdZOXZv1KbF0q9S2v9CFqGEMXuOwB36BoeAsjp1Sw" -X POST https://test-blog-api-volt.herokuapp.com/api/v1/posts/17/comments.json
+```
+
+- Success response:
+```json
+{
+  "id":5,
+  "body":"body",
+  "published_at":"2018-08-27T23:58:11.548Z",
+  "author_nickname":"spiderman",
+  "post_id":17
+}
+```
+- Fail response:
+```json
+{
+  "errors":
+    {
+      "body":["can't be blank"]
+    }
+}
+```
+**Show created comment:**
+- Request: 
+ ```bash
+ curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzU5OTYzOTksInN1YiI6MX0.qpmdZOXZv1KbF0q9S2v9CFqGEMXuOwB36BoeAsjp1Sw" -X GET https://test-blog-api-volt.herokuapp.com/api/v1/posts/17/comments/1.json
+```
+- Success response:
+```json
+{
+  "id":1,
+  "body":"comment body",
+  "published_at":"2018-08-28T01:58:44.492Z",
+  "author_nickname":"spiderman",
+  "post_id":17
+}
+```
+- Fail response:
+```json
+{
+  "errors":"Can't find comment with id 40"
+}
+```
+**Show all comments for post:**
+
+- Request:
+```bash
+ curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzU5OTYzOTksInN1YiI6MX0.qpmdZOXZv1KbF0q9S2v9CFqGEMXuOwB36BoeAsjp1Sw" -X GET https://test-blog-api-volt.herokuapp.com/api/v1/posts/17/comments.json
+```
+
+- Success response:
+```json
+[
+  {
+    "id":1,
+    "body":"body",
+    "published_at":"2018-08-27T23:52:45.958Z",
+    "author_nickname":"spiderman",
+    "post_id": 17
+  },
+  {
+    "id":2,
+    "body":"body",
+    "published_at":"2018-08-27T23:52:45.958Z",
+    "author_nickname":"spiderman",
+    "post_id": 17
+  },
+  ...
+  ...
+  {
+    "id":10,
+    "body":"body",
+    "published_at":"2018-08-27T23:52:45.958Z",
+    "author_nickname":"spiderman",
+    "post_id": 17
+  }
+]
+```
+- Fail response:
+```json
+{
+  "errors": "Current post doesn't have comments yet"
+}
+```
