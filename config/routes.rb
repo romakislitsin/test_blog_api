@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # Api actions
   scope :api do
     scope :v1 do
-      resources :posts
+      resources :posts do
+        resources :comments
+      end
     end
   end
 end

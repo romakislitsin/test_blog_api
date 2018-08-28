@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     if @post = Post.find_by(id: params[:id])
       render json: @post
     else
-      render json: { errors: "Can't find user with id #{params[:id]}" }
+      render json: { errors: "Can't find comment with id #{params[:id]}" }
     end
   end
 

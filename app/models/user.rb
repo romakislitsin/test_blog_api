@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :posts, inverse_of: :user, foreign_key: 'author_id'
+  has_many :comments, inverse_of: :user, foreign_key: 'author_id'
 
   accepts_nested_attributes_for :posts
 
