@@ -19,6 +19,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    if @post = Post.find_by(id: params[:id])
+      render json: @post
+    else
+      render json: { errors: "Can't find user with id #{params[:id]}" }
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :body, :published_at, :author_id)
