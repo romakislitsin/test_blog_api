@@ -5,4 +5,11 @@ Rails.application.routes.draw do
   # User actions
   get    '/users/current'  => 'users#current'
   post   '/users/create'   => 'users#create'
+
+  # Api actions
+  scope :api do
+    scope :v1 do
+      resources :posts
+    end
+  end
 end
