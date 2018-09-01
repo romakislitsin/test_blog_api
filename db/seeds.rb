@@ -9,7 +9,7 @@
 10.times do |i|
   User.create(
       email: "user#{i}@example.com",
-      username: Faker::GameOfThrones.character,
+      nickname: Faker::GameOfThrones.character,
       password: "password_#{i}",
       password_confirmation: "password_#{i}"
   )
