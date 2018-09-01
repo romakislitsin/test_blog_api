@@ -90,17 +90,18 @@ Rails.application.configure do
   end
 
   config.action_mailer.smtp_settings = {
+      tls: false,
       address: "smtp.yandex.ru",
       port: 587,
       domain: "yandex.ru",
       from: "ksltsn@yandex.ru",
-      user_name: Rails.application.credentials.dig(:smtp, :username),
-      password: Rails.application.credentials.dig(:smtp, :password),
+      user_name: ENV['SMTP_USERNAME'],
+      password: ENV['SMTP_PASSWORD'],
       authentication: :login,
       enable_starttls_auto: true
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://test-blog-api-volt.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
 
 
