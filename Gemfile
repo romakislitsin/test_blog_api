@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
@@ -14,6 +15,8 @@ gem 'knock'
 gem 'jwt'
 gem 'will_paginate'
 gem 'faker'
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

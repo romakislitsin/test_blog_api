@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h1 class="text-center">Пользователь: <%= @user.nickname%></h1>
+
+
+  <%= form_for @user, url: users_add_avatar_path(id: @user.id), html: {class: 'form'} do |f| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <fieldset>
+      <div class="form-group">
+        <label for="avatarInput">Аватар</label>
+        <%= f.file_field :avatar, direct_upload: true , class: 'form-control-file', id: 'avatarInput' %>
+      </div>
+
+
+
+
+    </fieldset>
+
+    <%= f.submit 'Загрузить', class: 'btn btn-primary' %>
+  <% end %>
+</div>
