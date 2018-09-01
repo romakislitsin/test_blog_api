@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   validates_presence_of     :body
 
   scope :by_published_date, -> { order(published_at: :desc) }
+  scope :by_date, -> (start_date, end_date) { where('published_at >= ? AND published_at <= ?', start_date, end_date) }
 
   PER_PAGE = 10
 

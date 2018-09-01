@@ -89,6 +89,21 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.action_mailer.smtp_settings = {
+      address: "smtp.yandex.ru",
+      port: 587,
+      domain: "yandex.ru",
+      from: "ksltsn@yandex.ru",
+      user_name: Rails.application.credentials.dig(:smtp, :username),
+      password: Rails.application.credentials.dig(:smtp, :password),
+      authentication: :login,
+      enable_starttls_auto: true
+  }
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'https://test-blog-api-volt.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

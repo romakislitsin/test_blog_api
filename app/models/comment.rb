@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
 
   validates_presence_of :body
 
+  scope :by_date, -> (start_date, end_date) { where('published_at >= ? AND published_at <= ?', start_date, end_date) }
+
   def set_time(time)
     self.published_at = time
   end

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<table>
+  <tr>
+    <td>Nickname</td>
+    <td>Email</td>
+    <td>Posts</td>
+    <td>Comments</td>
+  </tr>
+  <% @report.each do |user| %>
+    <tr>
+      <td><%= user[:nickname] %></td>
+      <td><%= user[:email]%></td>
+      <td><%= user[:posts] %></td>
+      <td><%= user[:comments] %></td>
+    </tr>
+  <% end %>
+</table>
+</body>
+</html>

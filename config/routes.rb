@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :posts do
         resources :comments
       end
+      post '/reports/by_author', to: 'reports#by_author'
     end
   end
 end
