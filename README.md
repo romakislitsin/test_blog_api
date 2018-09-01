@@ -238,3 +238,28 @@
   "errors": "Current post doesn't have comments yet"
 }
 ```
+
+## Endpoint for generating report:
+
+
+ - Request: 
+
+```bash
+curl -d '{"start_date": "2016-08-24T21:50:16.198Z", "end_date": "2018-08-24T21:50:16.198Z", "email": "piter@parker.com"}' -H "Content-Type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzYxNDcxMjQsInN1YiI6MX0.cXbOIUNOpLNB-3xDOS-xjDahXzq3aXRQJgQPnLm_Qa0" -X POST https://test-blog-api-volt.herokuapp.com/api/v1/reports/by_author.json
+```
+
+ - Success response:
+ ```json
+{
+  "message": "Report generation started.",
+  "status": 200,
+}
+ ```
+
+ - Fail response:
+ ```json
+{
+  "errors": "Not enough parameters for generating report.",
+  "status": 400,
+}
+ ```
